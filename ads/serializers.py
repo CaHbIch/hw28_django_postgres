@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from ads.models.ad import Ad
 from ads.models.category import Category
-from user.models.location import Location
+from users.models.location import Location
 
 
 class AdSerializer(serializers.ModelSerializer):

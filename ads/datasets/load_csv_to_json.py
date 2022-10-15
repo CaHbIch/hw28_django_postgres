@@ -1,6 +1,5 @@
 import csv, json
 
-
 # Параметры
 csv_file_ad = 'ad.csv'
 json_file_ad = '../fixtures/ad.json'
@@ -12,11 +11,12 @@ category_model = 'ads.category'
 
 csv_file_location = 'location.csv'
 json_file_location = '../fixtures/location.json'
-location_model = 'ads.location.py'
+location_model = 'users.location'
 
 csv_file_user = 'user.csv'
 json_file_user = '../fixtures/user.json'
-user_model = 'ads.user'
+users_model = 'users.user'
+
 
 # Функция конвертации
 def csv_to_json(csv_file_path: str, json_file_path: str, model: str) -> str:
@@ -57,6 +57,4 @@ if __name__ == '__main__':
     print(csv_to_json(csv_file_ad, json_file_ad, ad_model))
     print(csv_to_json(csv_file_category, json_file_category, category_model))
     print(csv_to_json(csv_file_location, json_file_location, location_model))
-    print(csv_to_json(csv_file_user, json_file_user, user_model))
-
-
+    print(csv_to_json(csv_file_user, json_file_user, users_model))

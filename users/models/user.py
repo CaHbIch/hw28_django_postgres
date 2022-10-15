@@ -1,6 +1,6 @@
 from django.db import models
 
-from user.models.location import Location
+from users.models.location import Location
 
 
 class User(models.Model):

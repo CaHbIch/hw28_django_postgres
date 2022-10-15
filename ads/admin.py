@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from ads.models.ad import Ad
 from ads.models.category import Category
-from user.models.location import Location
+from users.models.location import Location
 
 admin.site.register(Ad)
 admin.site.register(Category)
