@@ -1,5 +1,15 @@
 from rest_framework import generics
-from ads.serializers import *
+
+from ads.models.ad import Ad
+from ads.models.category import Category
+from ads.serializers import AdSerializer, CatSerializer
+
+from django.http import JsonResponse
+
+
+def index(request):
+    response = {'status': 'ok'}
+    return JsonResponse(response, status=200)
 
 
 class AdsAPIList(generics.ListCreateAPIView):

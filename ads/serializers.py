@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
-from ads.models import *
+from ads.models.ad import Ad
+from ads.models.category import Category
+from user.models.location import Location
 
 
 class AdSerializer(serializers.ModelSerializer):
@@ -12,4 +14,10 @@ class AdSerializer(serializers.ModelSerializer):
 class CatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
+        fields = '__all__'
+
+
+class LocSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
         fields = '__all__'

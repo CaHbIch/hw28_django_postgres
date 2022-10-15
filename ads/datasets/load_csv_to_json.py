@@ -12,7 +12,7 @@ category_model = 'ads.category'
 
 csv_file_location = 'location.csv'
 json_file_location = '../fixtures/location.json'
-location_model = 'ads.location'
+location_model = 'ads.location.py'
 
 csv_file_user = 'user.csv'
 json_file_user = '../fixtures/user.json'
