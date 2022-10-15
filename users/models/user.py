@@ -1,5 +1,4 @@
 from django.db import models
-
 from users.models.location import Location
 
 
@@ -15,8 +14,10 @@ class User(models.Model):
     username = models.CharField(max_length=20, unique=True)
     password = models.CharField(max_length=200)
     role = models.CharField(max_length=10, choices=ROLES, default='member')
-    age = models.SmallIntegerField()
-    location = models.ManyToManyField(Location)
+    age = models.PositiveIntegerField()
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, null=True)
+
+    # location = models.ManyToManyField(Location)
 
     class Meta:
         verbose_name = 'Пользователь'

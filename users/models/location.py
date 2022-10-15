@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Location(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, db_index=True)
     lat = models.DecimalField(max_digits=8, decimal_places=6, null=True)
     lng = models.DecimalField(max_digits=8, decimal_places=6, null=True)
 

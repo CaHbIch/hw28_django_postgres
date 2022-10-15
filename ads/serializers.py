@@ -2,10 +2,21 @@ from rest_framework import serializers
 
 from ads.models.ad import Ad
 from ads.models.category import Category
-from users.models.location import Location
+from users.models.user import User
 
 
 class AdSerializer(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(
+        required=False,
+        queryset=User.objects.all(),
+        slug_field='first_name'
+    )
+    category = serializers.SlugRelatedField(
+        required=False,
+        queryset=Category.objects.all(),
+        slug_field='name'
+    )
+
     class Meta:
         model = Ad
         fields = '__all__'
@@ -14,10 +25,4 @@ class AdSerializer(serializers.ModelSerializer):
 class CatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = '__all__'
-
-
-class LocSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Location
         fields = '__all__'
