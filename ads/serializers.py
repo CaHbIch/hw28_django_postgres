@@ -6,11 +6,14 @@ from users.models.user import User
 
 
 class AdSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     author = serializers.SlugRelatedField(
         required=False,
         queryset=User.objects.all(),
         slug_field='first_name'
     )
+
     category = serializers.SlugRelatedField(
         required=False,
         queryset=Category.objects.all(),

@@ -16,7 +16,7 @@ def index(request):
 
 class AdViewSet(viewsets.ModelViewSet):
     """ Для списка объявлений"""
-    queryset = Ad.objects.select_related('author', 'category').all()
+    queryset = Ad.objects.filter(is_published=True)
     serializer_class = AdSerializer
 
     # def get_queryset(self):

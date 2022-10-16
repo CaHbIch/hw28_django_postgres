@@ -1,22 +1,21 @@
 ## Проект готов к локальному запуску
-Запустить базу данных postgres:  docker-compose up --build -d
 
-
-### Создание fixture и загрузка данных
-
-Зайти в папку "ad/datasets" (там лежат файлы csv с данными)
-
-Выполнить 'python3 load_csv_to_json.py' (получает данные из файлов csv, преобразует в json и помещает в папку с fixtures)
+Запустить базу данных c postgres:  docker-compose up -d
 
 ### Миграции
-Необходимо создать миграцию "./manage.py makemigrations"  и накатить миграцию "./manage.py migrate"
 
-Вернитесь в папку проекта и загрузите данные в БД выполните « ./manage.py loaddata ad.json ».
-Выполнить «python3 manage.py loaddata category.json»
+Накатить миграцию:
 
-### Доступные маршруты и методы
+./manage.py migrate
 
-/ad/ - GET, POST
-/ad/3 - GET
-/cat/ - GET, POST
-/cat/3/ - GET
+### Загрузка данных в БД :
+
+./manage.py loaddata locations.json'
+./manage.py loaddata users.json'
+./manage.py loaddata categories.json'
+./manage.py loaddata ads.json'
+
+### Для доступа к админке
+
+Пользователь: skypro
+пароль: 1234
