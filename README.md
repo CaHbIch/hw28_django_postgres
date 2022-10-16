@@ -11,7 +11,7 @@
 ### Миграции
 Необходимо создать миграцию "./manage.py makemigrations"  и накатить миграцию "./manage.py migrate"
 
-Вернитесь в папку проекта и загрузите данные в БД выполните «python3 manage.py loaddata ad.json».
+Вернитесь в папку проекта и загрузите данные в БД выполните « ./manage.py loaddata ad.json ».
 Выполнить «python3 manage.py loaddata category.json»
 
 ### Доступные маршруты и методы

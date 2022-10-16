@@ -1,4 +1,5 @@
 import csv, json
+from pprint import pp
 
 # Параметры
 csv_file_ad = 'ad.csv'
@@ -29,10 +30,9 @@ def csv_to_json(csv_file_path: str, json_file_path: str, model: str) -> str:
         data: list = [
             {'model': model,
              'pk': int(row['id']) if row.get('id') else int(row['Id']),
-             'fields': {
-                 key: replace_values(value) for key, value in row.items() if key != 'id' and key != 'Id'}
-             }
+             'fields': {key: replace_values(value) for key, value in row.items() if key != 'id' and key != 'Id'}}
             for row in reader
+
         ]
 
     # создать новый файл json и записать данные
