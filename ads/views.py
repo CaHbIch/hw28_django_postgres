@@ -25,12 +25,12 @@ class AdViewSet(viewsets.ModelViewSet):
     #     if not pk:
     #         return Ad.objects.all()[:3]
     #     return Ad.objects.filter(pk=pk)
-
-    @action(methods=['GET'], detail=False)  # detail - Для списка записей, если True -тогда одна запись.
-    def category(self, request):
-        """ Добавление не стандартных маршрутов в класс AdsViewSet, localhost/ad/category"""
-        cats = Category.objects.all()
-        return JsonResponse({'cats': [cat.name for cat in cats]}, json_dumps_params={"ensure_ascii": False})
+    #
+    # @action(methods=['GET'], detail=False)  # detail - Для списка записей, если True -тогда одна запись.
+    # def category(self, request):
+    #     """ Добавление не стандартных маршрутов в класс AdsViewSet, localhost/ad/category"""
+    #     cats = Category.objects.all()
+    #     return JsonResponse({'cats': [cat.name for cat in cats]}, json_dumps_params={"ensure_ascii": False})
 
 
 class CatViewPagination(PageNumberPagination):
@@ -44,6 +44,6 @@ class CatViewPagination(PageNumberPagination):
 
 class CatViewSet(viewsets.ModelViewSet):
     """ Для списка категорий"""
-    queryset = Category.objects.all()
+    queryset = Category.objects.all().order_by('name')
     serializer_class = CatSerializer
     pagination_class = CatViewPagination

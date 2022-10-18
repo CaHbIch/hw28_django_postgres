@@ -1,9 +1,9 @@
-from django.db.models import Count, Q
+from django.db.models import Count
+from django.http import JsonResponse
 from rest_framework import viewsets
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser
 
-from ads.models.ad import Ad
-from ads.models.category import Category
 from users.models.location import Location
 from users.models.user import User
 from users.serializers import UserSerializer, LocationSerializer
@@ -14,7 +14,17 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsAdminUser,)
-    q = User.objects.values("ad__is_published").annotate(total_ads=Count('username'))
+
+    @action(methods=['GET'], detail=False)  # detail - Для списка записей, если True -тогда одна запись.
+    def total_ads(self, request):
+        """ Cписок пользователей с количеством опубликованных пользователем объявлений"""
+        ads = User.objects.annotate(total_ads=Count('ad'))
+        return JsonResponse({'Users': [{"id": ad.id,
+                                        "username": ad.username,
+                                        "total_ads": ad.total_ads,
+                                        "locations": list(map(str, ad.location.all()))
+                                        } for ad in ads]},
+                            json_dumps_params={"ensure_ascii": False})
 
 
 class LocationViewSet(viewsets.ModelViewSet):
